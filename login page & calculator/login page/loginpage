@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+    .login-container h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group .error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .login-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <input type="text" id="username" placeholder="Username">
+        <div class="error" id="usernameError">Username is required</div>
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" placeholder="Password">
+        <div class="error" id="passwordError">Password is required</div>
+      </div>
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const usernameError = document.getElementById('usernameError');
+    const passwordError = document.getElementById('passwordError');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // prevent form from submitting
+
+      let valid = true;
+
+      if (username.value.trim() === '') {
+        usernameError.style.display = 'block';
+        valid = false;
+      } else {
+        usernameError.style.display = 'none';
+      }
+
+      if (password.value.trim() === '') {
+        passwordError.style.display = 'block';
+        valid = false;
+      } else {
+        passwordError.style.display = 'none';
+      }
+
+      if (valid) {
+        alert('Login successful!');
+        // You can redirect or call your backend login API here
+      }
+    });
+  </script>
+</body>
+</html>
